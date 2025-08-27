@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Levi’s Course Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Levi’s Course Dashboard</h1>
+      <div class="controls">
+        <select id="courseFilter" class="select" title="Filter by course">
+          <option value="all">All courses</option>
+          <option value="math">College Algebra</option>
+          <option value="comp">Composition</option>
+          <option value="hist">US History</option>
+        </select>
+        <input id="searchBox" class="search" placeholder="Search…" />
+        <button id="btnDashboard" class="btn active">Upcoming</button>
+        <button id="btnSchedule" class="btn">Schedule</button>
+        <button id="btnCalendar" class="btn">Calendar</button>
+      </div>
+    </header>
+
+    <!-- UPCOMING -->
+    <div id="dashboardView" class="grid" role="region" aria-label="Upcoming tasks">
+      <section class="card">
+        <h2 class="section-title">Due This Week</h2>
+        <div id="listThisWeek"></div>
+      </section>
+      <section class="card">
+        <h2 class="section-title">Next Up</h2>
+        <div id="listNextUp"></div>
+      </section>
+      <section class="card" style="grid-column: 1 / -1;">
+        <div class="section-title">Completed</div>
+        <div id="listDone"></div>
+      </section>
+      
+      <!-- Progress Overview -->
+      <section class="card progress-card" style="grid-column: 1 / -1;">
+        <div class="section-title">Progress Overview</div>
+        <div class="progress-grid">
+          <div class="progress-item">
+            <div class="progress-label">This Week</div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="weekProgress"></div>
+            </div>
+            <div class="progress-text" id="weekProgressText">0/0</div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">Overall</div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="overallProgress"></div>
+            </div>
+            <div class="progress-text" id="overallProgressText">0/0</div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Quick Add Task -->
+      <section class="card quick-add-card" style="grid-column: 1 / -1;">
+        <div class="section-title">Quick Add Task</div>
+        <div class="quick-add-form">
+          <input type="text" id="quickTaskTitle" placeholder="Task title..." class="quick-input">
+          <select id="quickTaskCourse" class="quick-select">
+            <option value="math">Math</option>
+            <option value="comp">Composition</option>
+            <option value="hist">US History</option>
+          </select>
+          <input type="datetime-local" id="quickTaskDue" class="quick-input">
+          <button id="quickAddBtn" class="btn quick-add-btn">Add Task</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- SCHEDULE -->
+    <div id="scheduleView" class="schedule" style="display:none;" role="region" aria-label="Planned schedule">
+      <div class="toolbar">
+        <div class="day-picker">
+          <button id="prevDay" class="btn">Prev Day</button>
+          <div id="dayLabel" class="small muted" style="min-width: 180px; text-align:center;"></div>
+          <button id="nextDay" class="btn">Next Day</button>
+          <button id="todayDay" class="btn">Today</button>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend">
+          <span class="pill math">Algebra</span>
+          <span class="pill comp">Composition</span>
+          <span class="pill hist">US History</span>
+        </div>
+        <button id="exportICS" class="btn export-btn" title="Export to Calendar">📅 Export .ics</button>
+      </div>
+      <div id="slotList"></div>
+      <p class="small muted" style="margin-top:8px;">Tip: edit the scheduleBlocks array in the code to adjust times or add blocks.</p>
+    </div>
+
+    <!-- CALENDAR -->
+    <div id="calendarView" class="calendar" style="display:none;">
+      <div class="cal-header">
+        <div class="legend">
+          <span class="pill math">Algebra</span>
+          <span class="pill comp">Composition</span>
+          <span class="pill hist">US History</span>
+        </div>
+        <div class="row">
+          <button id="prevMonth" class="btn">Prev</button>
+          <div id="calLabel" class="small muted" style="min-width: 160px; text-align:center;"></div>
+          <button id="nextMonth" class="btn">Next</button>
+          <button id="todayBtn" class="btn">Today</button>
+        </div>
+      </div>
+      <div class="cal-grid" id="calGridDOW"></div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

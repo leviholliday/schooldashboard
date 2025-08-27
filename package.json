@@ -1,0 +1,27 @@
+{
+  "name": "levi-course-dashboard",
+  "version": "1.0.0",
+  "description": "A comprehensive course management dashboard for tracking assignments, schedules, and deadlines",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "build": "echo 'Static site - no build step required'",
+    "deploy": "echo 'Deploy to Netlify via GitHub integration'"
+  },
+  "keywords": [
+    "dashboard",
+    "course-management",
+    "student-tools",
+    "schedule",
+    "calendar"
+  ],
+  "author": "Levi Holliday",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/levi-course-dashboard.git"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
